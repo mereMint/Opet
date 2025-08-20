@@ -10,11 +10,11 @@ function newGame() {
   console.log("New game started");
   // Add logic to initialize a new game here
    localStorage.removeItem('pet');
-   window.location.href = "html/select.html";
+   window.location.href = "../html/select.html";
 }
 
 function loadGame() {
-  window.location.href = "html/hub.html";
+  window.location.href = "../html/hub.html";
   console.log("Game loaded");
   // Add logic to load a saved game here
 }
