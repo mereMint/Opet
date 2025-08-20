@@ -43,6 +43,7 @@ function updateInfo() {
     document.getElementById("pet-level").innerHTML = `Level: ${pet.level}`;
 
 
+    //have to add a check for if any other face has to be displayed
     // update pet image based on various states
     if (pet.type === "Cat") {
         if (pet.happiness > 70) {
