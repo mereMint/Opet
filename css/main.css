@@ -16,7 +16,7 @@
 
     body {
         font-family: dm-mono-medium, monospace;
-        background-image: url('../assets/background-scrollable.png');
+        background-image: url('/assets/background-scrollable.png');
         background-size:cover;
         background-repeat: no-repeat;
         background-attachment: fixed;
@@ -99,7 +99,7 @@
 
     body {
         font-family: dm-mono-medium, monospace;
-        background-image: url('assets/background-scrollable.png');
+        background-image: url('/assets/background-scrollable.png');
         background-size:cover;
         background-repeat: no-repeat;
         background-attachment: fixed;
