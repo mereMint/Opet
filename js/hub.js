@@ -47,36 +47,36 @@ function updateInfo() {
     // update pet image based on various states
     if (pet.type === "Cat") {
         if (pet.happiness > 70) {
-            document.getElementById("pet-display").src = "../assets/pet/cat/happy.png";
+            document.getElementById("pet-display").src = "./assets/pet/cat/happy.png";
         } else if (pet.happiness > 30) {
-            document.getElementById("pet-display").src = "../assets/pet/cat/neutral.png";
+            document.getElementById("pet-display").src = "./assets/pet/cat/neutral.png";
         } else {
-            document.getElementById("pet-display").src = "../assets/pet/cat/sad.png";
+            document.getElementById("pet-display").src = "./assets/pet/cat/sad.png";
         }
     /*
     }else if (pet.type === "Dog") {
         if (pet.happiness > 70) {
-            document.getElementById("pet-display").src = "../assets/pet/dog/happy.png";
+            document.getElementById("pet-display").src = "./assets/pet/dog/happy.png";
         } else if (pet.happiness > 30) {
-            document.getElementById("pet-display").src = "../assets/pet/dog/neutral.png";
+            document.getElementById("pet-display").src = "./assets/pet/dog/neutral.png";
         } else {
-            document.getElementById("pet-display").src = "../assets/pet/dog/sad.png";
+            document.getElementById("pet-display").src = "./assets/pet/dog/sad.png";
         }
     }else if (pet.type === "Rabbit") {
         if (pet.happiness > 70) {
-            document.getElementById("pet-display").src = "../assets/pet/rabbit/happy.png";
+            document.getElementById("pet-display").src = "./assets/pet/rabbit/happy.png";
         } else if (pet.happiness > 30) {
-            document.getElementById("pet-display").src = "../assets/pet/rabbit/neutral.png";
+            document.getElementById("pet-display").src = "./assets/pet/rabbit/neutral.png";
         } else {
-            document.getElementById("pet-display").src = "../assets/pet/rabbit/sad.png";
+            document.getElementById("pet-display").src = "./assets/pet/rabbit/sad.png";
         }
     }else if (pet.type === "Bird") {
         if (pet.happiness > 70) {
-            document.getElementById("pet-display").src = "../assets/pet/bird/happy.png";
+            document.getElementById("pet-display").src = "./assets/pet/bird/happy.png";
         } else if (pet.happiness > 30) {
-            document.getElementById("pet-display").src = "../assets/pet/bird/neutral.png";
+            document.getElementById("pet-display").src = "./assets/pet/bird/neutral.png";
         } else {
-            document.getElementById("pet-display").src = "../assets/pet/bird/sad.png";
+            document.getElementById("pet-display").src = "./assets/pet/bird/sad.png";
         }
     */
     }
