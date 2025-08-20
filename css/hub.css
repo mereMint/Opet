@@ -1,0 +1,180 @@
+@media screen and (min-width: 850px) {
+
+    body {
+    font-family: dm-mono-medium, monospace;
+    background-image: url('../assets/background-scrollable.png');
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    image-rendering: pixelated;
+    background-color: #000000;
+    color: #BBD6FD;
+    }
+    p{
+        font-family: dm-mono-medium, monospace;
+        color: #BBD6FD;
+        font-size: 1em;
+        text-align: center;
+    }
+
+    h1 {
+        font-family: "Press Start 2P", system-ui;
+        font-weight: bold;
+        text-align: center;
+        color: #BBD6FD;
+        font-size: 2em;
+        text-shadow: 2px 2px 0 #000000, 4px 4px 0 #000000, 6px 6px 0 #000000, 8px 8px 0 #000000;
+    }
+    h2 {
+        font-family: "Press Start 2P", system-ui;
+        font-weight: bold;
+        text-align: center;
+        color: #BBD6FD;
+        font-size: 1.5em;
+        text-shadow: 2px 2px 0 #000000, 4px 4px 0 #000000, 6px 6px 0 #000000, 8px 8px 0 #000000;
+    }
+    .box{
+        margin-top: 5vh;
+        margin-left: 10vw;
+        margin-right: 10vw;
+        /* From https://css.glass */
+        padding: 0.1vw;
+        border: 10px solid #30255f07;
+        border-radius: 10px;
+        background-color: #0e0430e3;
+        backdrop-filter: blur(5px);
+    }
+    .pet{
+        margin-left: 5vw;
+        margin-right: 5vw;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
+    .game-display {
+        justify-content: center;
+        height: 256px;
+        width: 256px;
+        border-radius: 10px;
+    }
+    .game-display img {
+        width: 128px;
+        height: 128px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin: 0 auto;
+        display: block;
+        border-width: 10px;
+    }
+
+    .info{
+        height: 256px;
+        width: 256px;
+        border-radius: 10px;
+    }
+    .info-display{
+        justify-content: center;
+        height: 128px;
+        width: 256px;
+        border-radius: 10px;
+        border: 10px solid #30255F;
+        background-color: #0E0430;
+        text-align: center;
+        display: block;
+        margin: 0 auto;
+        overflow-y: scroll;
+    }
+    .actions {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: auto;
+        width: auto;
+        gap: 5vw;
+        border: 10px solid #30255F;
+        background-color: #0E0430;
+        border-radius: 10px;
+        padding: 1.5vh;
+    }
+    img{
+        border: solid #30255F;
+        height: 32px;
+        width: 32px;
+        border-radius: 10px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+
+    body {
+    font-family: dm-mono-medium, monospace;
+    background-image: url('../assets/background-scrollable.png');
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    image-rendering: pixelated;
+    background-color: #000000;
+    }
+
+
+    .box{
+        margin-top: 5vh;
+        margin-left: 1vw;
+        margin-right: 1vw;
+        /* From https://css.glass */
+        padding: 25px;
+        border-radius: 10px;
+        background-color: #0e0430e3;
+        backdrop-filter: blur(5px);
+        overflow: hidden;
+        height: 80vh;
+    }
+
+    .pet-display {
+        display: grid;
+        grid-template-columns: 2fr 2fr;
+        justify-content: center;
+        margin-top: 5vh;
+        margin-left: 2%;
+        margin-right: 2%;
+        gap: 2vw;
+        align-items: center;
+        background-color: #0E0430;
+        border-radius: 10px;
+        padding: 1vh;
+        backdrop-filter: blur(5px);
+        margin-bottom: 2vh;
+    }
+    .pet-options img {
+        max-width: 100%;
+        max-height: 100%;
+        background-size: cover;
+        background-position: center;
+        border-radius: 10px;
+        margin: auto;
+
+    }
+
+
+    h1 {
+        text-align: center;
+        font-family: 'Press Start 2P', cursive;
+        color: #BBD6FD;
+        margin-top: 5vh;
+    }
+    h2 {
+        text-align: center;
+        font-family: 'Press Start 2P', cursive;
+        color: #BBD6FD;
+        margin-top: 2vh;
+    }
+
+    
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+}

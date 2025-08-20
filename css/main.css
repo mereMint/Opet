@@ -1,0 +1,164 @@
+@media screen and (min-width: 1000px) {
+    .dm-mono-medium {
+        font-family: "DM Mono", monospace;
+        font-weight: 500;
+        font-style: normal;
+    }
+
+    .press-start-2p-regular {
+        font-family: "Press Start 2P", system-ui;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+
+
+
+    body {
+        font-family: dm-mono-medium, monospace;
+        background-image: url('../assets/background-scrollable.png');
+        background-size:cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        image-rendering: pixelated;
+        background-color: #000000;
+    }
+
+
+    .buttons {
+
+        display: flex;
+        justify-content: center;
+        margin-top: 35vh;
+        border-color: white;
+        padding: 1vh;
+    }
+
+    .buttons button {
+        font-family: "Press Start 2P", system-ui;
+        color: #BBD6FD;
+        margin-left: 1vw;
+        margin-right: 1vw;
+        border: none;
+        background-color: #522F81;
+        padding: 1vh 2vw;
+        border-radius: 5px;
+        font-size: 1.5em;
+        box-shadow: #000000 0px 0px 10px, #000000 0px 0px 20px, #000000 0px 0px 30px;
+        
+    }
+    .buttons button:hover {
+        background-color: #8B8BDB;
+        cursor: pointer;
+    }
+
+    h1 {
+        font-family: "Press Start 2P", system-ui;
+        font-weight: bold;
+        text-align: center;
+        color: #BBD6FD;
+        font-size: 5em;
+        text-shadow: 2px 2px 0 #000000, 4px 4px 0 #000000, 6px 6px 0 #000000, 8px 8px 0 #000000;
+    }
+
+    .description {
+        color:#BBD6FD ;
+        font-size: 1.2em;
+        text-align: center;
+        margin-top: 60vh;
+    }
+
+    .credentials {
+        color: #BBD6FD;
+        font-size: 1.2em;
+        text-align: center;
+        margin-top: 70vh;
+    }
+
+    ::-webkit-scrollbar {
+        width: 0px;
+    }
+    
+}
+
+@media screen and (max-width: 1000px) {
+   .dm-mono-medium {
+        font-family: "DM Mono", monospace;
+        font-weight: 500;
+        font-style: normal;
+    }
+
+    .press-start-2p-regular {
+        font-family: "Press Start 2P", system-ui;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+
+
+
+    body {
+        font-family: dm-mono-medium, monospace;
+        background-image: url('../assets/background-scrollable.png');
+        background-size:cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        image-rendering: pixelated;
+        background-color: #000000;
+    }
+
+
+    .buttons {
+
+        display:grid;
+        gap: calc(2vw + 10px);
+        justify-content: center;
+        margin-top: 10vh;
+        border-color: white;
+        padding: 1vh;
+    }
+
+    .buttons button {
+        font-family: "Press Start 2P", system-ui;
+        color: #BBD6FD;
+        border: none;
+        background-color: #522F81;
+        padding: 1vh 10vw;
+        border-radius: 5px;
+        font-size: 1.5em;
+        box-shadow: #000000 0px 0px 10px, #000000 0px 0px 20px, #000000 0px 0px 30px;
+        
+    }
+    .buttons button:hover {
+        background-color: #8B8BDB;
+        cursor: pointer;
+    }
+
+    h1 {
+        font-family: "Press Start 2P", system-ui;
+        font-weight: bold;
+        text-align: center;
+        color: #BBD6FD;
+        font-size: calc(2.5em + 5vw);
+        text-shadow: 2px 2px 0 #000000, 4px 4px 0 #000000, 6px 6px 0 #000000, 8px 8px 0 #000000;
+    }
+
+    .description {
+        color:#BBD6FD ;
+        font-size: 1.2em;
+        text-align: center;
+        margin-top: 70vh;
+    }
+
+    .credentials {
+        color: #BBD6FD;
+        font-size: 1.2em;
+        text-align: center;
+        margin-top: 70vh;
+    }
+
+    ::-webkit-scrollbar {
+        width: 0px;
+    }
+    
+}
