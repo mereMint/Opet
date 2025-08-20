@@ -38,7 +38,7 @@ if (petNumber === 1) {
 }else if (petNumber === 3) {
     document.getElementById("pet1").src = "../assets/pet/cat/neutral.png";
     document.getElementById("pet2").src = "../assets/pet/cat/neutral.png";
-    document.getElementById("pet3").src = "..assets/pet/cat/happy.png";
+    document.getElementById("pet3").src = "../assets/pet/cat/happy.png";
     document.getElementById("pet4").src = "../assets/pet/cat/neutral.png";
 }else if (petNumber === 4) {
     document.getElementById("pet1").src = "../assets/pet/cat/neutral.png";

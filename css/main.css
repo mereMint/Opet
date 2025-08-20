@@ -162,3 +162,32 @@
     }
     
 }
+
+
+.flyout {
+    animation: flyOut 1s ease-in-out forwards;
+}
+.scrolly {
+    animation: flyIn 1s ease-in-out forwards;
+}
+
+@keyframes flyIn {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+@keyframes flyOut {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(25%);
+        opacity: 0;
+    }
+}

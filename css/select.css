@@ -9,6 +9,7 @@
     background-attachment: fixed;
     image-rendering: pixelated;
     background-color: #000000;
+    animation: background 1s ease-in-out;
     }
 
 
@@ -22,6 +23,7 @@
         background-color: #0e0430e3;
         backdrop-filter: blur(5px);
         height: 80vh;
+        animation: flyIn 1s ease-in-out;
     }
 
     .pet-options {
@@ -119,6 +121,7 @@
     background-attachment: fixed;
     image-rendering: pixelated;
     background-color: #000000;
+    animation: background 1s ease-in-out;
     }
 
 
@@ -133,6 +136,7 @@
         backdrop-filter: blur(5px);
         overflow: hidden;
         height: 80vh;
+        animation: flyIn 1s ease-in-out;
     }
 
     .pet-options {
@@ -223,3 +227,23 @@
 }
 
 
+@keyframes background {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+    
+}
+
+@keyframes flyIn {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

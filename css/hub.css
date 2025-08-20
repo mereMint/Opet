@@ -9,11 +9,12 @@
     image-rendering: pixelated;
     background-color: #000000;
     color: #BBD6FD;
+    animation: background 1s ease-in-out;
     }
     p{
         font-family: dm-mono-medium, monospace;
         color: #BBD6FD;
-        font-size: 1em;
+        font-size: 1.5em;
         text-align: center;
     }
 
@@ -39,10 +40,10 @@
         margin-right: 10vw;
         /* From https://css.glass */
         padding: 0.1vw;
-        border: 10px solid #30255f07;
         border-radius: 10px;
         background-color: #0e0430e3;
         backdrop-filter: blur(5px);
+        animation: flyIn 1s ease-in-out;
     }
     .pet{
         margin-left: 5vw;
@@ -104,6 +105,27 @@
         height: 32px;
         width: 32px;
         border-radius: 10px;
+    }
+}
+
+@keyframes background {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+    
+}
+
+@keyframes flyIn {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
     }
 }
 
