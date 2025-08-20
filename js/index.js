@@ -14,7 +14,7 @@ function newGame() {
   document.getElementById("body").classList.add("scrolly");
   
   setTimeout(() => {
-    window.location.href = "../html/select.html";
+    window.location.href = "html/select.html";
   }, 1500);
 }
 
@@ -24,9 +24,9 @@ function loadGame() {
   
   setTimeout(() => {
     if (!localStorage.getItem("pet")) {
-      window.location.href = "../html/select.html";
+      window.location.href = "html/select.html";
     }else {
-       window.location.href = "../html/hub.html";
+       window.location.href = "html/hub.html";
     }
    
   }, 1500);
