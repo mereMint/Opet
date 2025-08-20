@@ -32,3 +32,7 @@ function savePetData() {
 setTimeout(() => update(), 1000);
 
 function update() {
+    if (pet.hunger > 0) {
+        pet.hunger -= 1;
+    }
+}
