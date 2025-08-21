@@ -1,13 +1,15 @@
 let pet = {
     name: "Dave",
-    type: "Cat",
+    type: "cat",
     age: 1,
     hunger: 50,
+    thirst: 50,
     happiness: 50,
     energy: 50,
     love: 0,
     level: 1,
     maxHunger: 100,
+    maxThirst: 100,
     maxHappiness: 100,
     maxEnergy: 100,
     maxLove: 100,
@@ -26,23 +28,23 @@ window.addEventListener('scroll', backgroundScroll);
 function preview(petNumber) {
 if (petNumber === 1) {
     document.getElementById("pet1").src = "../assets/pet/cat/happy.png";
-    document.getElementById("pet2").src = "../assets/pet/cat/neutral.png";
+    document.getElementById("pet2").src = "../assets/pet/fox/neutral.png";
     document.getElementById("pet3").src = "../assets/pet/cat/neutral.png";
     document.getElementById("pet4").src = "../assets/pet/cat/neutral.png";
 
 }else if (petNumber === 2) {
     document.getElementById("pet1").src = "../assets/pet/cat/neutral.png";
-    document.getElementById("pet2").src = "../assets/pet/cat/happy.png";
+    document.getElementById("pet2").src = "../assets/pet/fox/happy.png";
     document.getElementById("pet3").src = "../assets/pet/cat/neutral.png";
     document.getElementById("pet4").src = "../assets/pet/cat/neutral.png";
 }else if (petNumber === 3) {
     document.getElementById("pet1").src = "../assets/pet/cat/neutral.png";
-    document.getElementById("pet2").src = "../assets/pet/cat/neutral.png";
+    document.getElementById("pet2").src = "../assets/pet/fox/neutral.png";
     document.getElementById("pet3").src = "../assets/pet/cat/happy.png";
     document.getElementById("pet4").src = "../assets/pet/cat/neutral.png";
 }else if (petNumber === 4) {
     document.getElementById("pet1").src = "../assets/pet/cat/neutral.png";
-    document.getElementById("pet2").src = "../assets/pet/cat/neutral.png";
+    document.getElementById("pet2").src = "../assets/pet/fox/neutral.png";
     document.getElementById("pet3").src = "../assets/pet/cat/neutral.png";
     document.getElementById("pet4").src = "../assets/pet/cat/happy.png";
 }
@@ -55,7 +57,7 @@ function choose(petNumber) {
         else {
             pet.name = document.getElementById("pet-name").value;
         }
-        pet.type = "Cat";
+        pet.type = "cat";
         localStorage.setItem("pet", JSON.stringify(pet));
         window.location.href = "hub.html";
     }
@@ -66,7 +68,7 @@ function choose(petNumber) {
         else {
             pet.name = document.getElementById("pet-name").value;
         }
-        pet.type = "Dog";
+        pet.type = "fox";
         localStorage.setItem("pet", JSON.stringify(pet));
         window.location.href = "hub.html";
     }
@@ -77,7 +79,7 @@ function choose(petNumber) {
         else {
             pet.name = document.getElementById("pet-name").value;
         }
-        pet.type = "Bird";
+        pet.type = "bird";
         localStorage.setItem("pet", JSON.stringify(pet));
         window.location.href = "hub.html";
     }
@@ -88,7 +90,7 @@ function choose(petNumber) {
         else {
             pet.name = document.getElementById("pet-name").value;
         }
-        pet.type = "Rabbit";
+        pet.type = "rabbit";
         localStorage.setItem("pet", JSON.stringify(pet));
         window.location.href = "hub.html";
     }
