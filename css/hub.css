@@ -44,6 +44,11 @@
         background-color: #0e0430e3;
         backdrop-filter: blur(5px);
         animation: flyIn 1s ease-in-out;
+        height: 90vh;
+        justify-items: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     .pet{
         margin-left: 5vw;
@@ -92,6 +97,8 @@
     }
     .actions {
         display: flex;
+        position: fixed;
+        bottom: 0;
         flex-direction: row;
         justify-content: center;
         margin: auto;
@@ -203,6 +210,7 @@
     }
 
     .info{
+        margin-bottom: 15vh;
         height: 256px;
         width: 256px;
         border-radius: 10px;
@@ -221,8 +229,9 @@
         overflow-y: scroll;
     }
     .actions {
+        margin-top: 10vh;
         display: flex;
-        position: fixed;
+        position: sticky;
         bottom: 0;
         flex-direction: row;
         justify-content: center;

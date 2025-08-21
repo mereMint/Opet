@@ -113,6 +113,35 @@ function action2() {
     }
 }
 
+function action3() {
+    // play
+    if (faceblock === false) {
+        faceblock = true;
+        pet.energy -=40;
+        if (pet.energy < 0) {
+            pet.energy = 0;
+        }
+
+        if (state === 1){ // sleep penatly
+            pet.happiness -= 25;
+            pet.love -= 5;
+            if (pet.happiness < 0) {
+                pet.happiness = 0;
+            }
+            if (pet.love < 0) {
+                pet.love = 0;
+            }
+        }else if (state === 0){
+            pet.happiness += 15;
+            pet.love += 20;
+
+            if (pet.happiness > pet.maxHappiness) {
+                pet.happiness = pet.maxHappiness;
+            }
+        }
+
+    }
+}
 
 function loadPetData() {
     pet = JSON.parse(localStorage.getItem("pet"));
@@ -205,15 +234,18 @@ function updatePet() {
 }
 
 function updateInfo() {
-    let ageInDays = Math.floor((new Date() - new Date(pet.creationdate)) / (1000 * 60 * 60 * 24));
-    pet.age = ageInDays * 86400; // convert days to seconds
+    let ageInDays = (new Date() - new Date(pet.creationdate)) / (1000 * 60 * 60 * 24);
+    pet.age = ageInDays
+    console.clear();
+    console.log(pet);
+    console.log(ageInDays);
     document.getElementById("pet-name").innerHTML = pet.name;
     document.getElementById("pet-hunger").innerHTML = `Hunger: ${pet.hunger}/${pet.maxHunger}`;
     document.getElementById("pet-thirst").innerHTML = `Thirst: ${pet.thirst}/${pet.maxThirst}`;
     document.getElementById("pet-happiness").innerHTML = `Happy: ${pet.happiness}/${pet.maxHappiness}`;
     document.getElementById("pet-energy").innerHTML = `Energy: ${pet.energy}/${pet.maxEnergy}`;
     document.getElementById("pet-love").innerHTML = `Love: ${pet.love}/${pet.maxLove}`;
-    document.getElementById("pet-age").innerHTML = `Age: ${Math.floor(pet.age / 86400)} days`;
+    document.getElementById("pet-age").innerHTML = `Age: ${Math.floor(pet.age)} days`;
     document.getElementById("pet-level").innerHTML = `Level: ${pet.level}`;
 
 
