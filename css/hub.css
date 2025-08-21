@@ -193,7 +193,7 @@
     }
     .game-display {
         justify-content: center;
-        height: 256px;
+        height: 220px;
         width: 256px;
         border-radius: 10px;
     }
