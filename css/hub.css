@@ -175,7 +175,7 @@
         background-color: #0e0430e3;
         backdrop-filter: blur(5px);
         animation: flyIn 1s ease-in-out;
-        height: 100vh;
+        height: 85vh;
         display: flex;
         flex-direction: column;
         justify-items: center;
@@ -218,7 +218,7 @@
     }
     .info-display{
         justify-content: center;
-        height: 256px;
+        height: 192px;
         width: 256px;
         border-radius: 10px;
         border: 10px solid #30255F;
