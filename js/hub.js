@@ -1,6 +1,7 @@
 let pet = {};
 let faceblock = false; // to block face updates when pet is being fed or played with
-let state = 0; 
+let state = 0;
+penalty = 0; // fuck ups counter
 window.onload = loadPetData();
 
 function cuddle() {
@@ -8,9 +9,10 @@ function cuddle() {
         faceblock = true;
         pet.energy -= 25;
         if (state === 1){ // if sleeping penatly
-            document.getElementById("pet-display").src = `../assets/pet/${pet.type}/sad.png`;
+            document.getElementById("pet-display").src = `../assets/pet/${pet.type}/angry.png`;
             pet.happiness -= 25;
             pet.love -= 10;
+            penalty += 1;
             if (pet.happiness < 0) {
                 pet.happiness = 0;
             }
@@ -22,10 +24,11 @@ function cuddle() {
             if (pet.energy < 0 || pet.happiness < 26) {
                 pet.energy = 0;
                 pet.love -= 5;
+                penalty += 1;
                 if (pet.love < 0) {
                     pet.love = 0;
                 }
-                document.getElementById("pet-display").src = `../assets/pet/${pet.type}/sad.png`;
+                document.getElementById("pet-display").src = `../assets/pet/${pet.type}/dislike.png`;
             }else{
                 pet.love += 5;
                 document.getElementById("pet-display").src = `../assets/pet/${pet.type}/love.png`;
@@ -59,7 +62,7 @@ function action1() {
                 pet.love = 0;
             }
             pet.hunger = pet.maxHunger;
-            document.getElementById("pet-display").src = `../assets/pet/${pet.type}/sad.png`;
+            document.getElementById("pet-display").src = `../assets/pet/${pet.type}/dislike.png`;
         }
         // eating takes energy
         energy = pet.energy - 5;
@@ -107,6 +110,8 @@ function action2() {
         if (state === 1){
             pet.happiness -= 25;
             pet.love -= 5;
+            penalty += 1;
+            document.getElementById("pet-display").src = `../assets/pet/${pet.type}/angry.png`;
             if (pet.happiness < 0) {
                 pet.happiness = 0;
             }
@@ -123,13 +128,14 @@ function action2() {
 }
 
 function action3() {
-    // play
+    // train
     if (faceblock === false) {
         faceblock = true;
         pet.energy -=40;
         if (pet.energy < 0) { // no energy doens't succed
             pet.energy = 0;
             pet.happiness -= 20;
+            penalty += 1;
             pet.love -= 5;
             if (pet.happiness < 0) {
                 pet.happiness = 0;
@@ -137,12 +143,13 @@ function action3() {
             if (pet.love < 0) {
                 pet.love = 0;
             } // gets annoyed
-            document.getElementById("pet-display").src = `../assets/pet/${pet.type}/neutral.png`;
+            document.getElementById("pet-display").src = `../assets/pet/${pet.type}/angry.png`;
         }else{
             if (state === 1){ // sleep penatly
-                document.getElementById("pet-display").src = `../assets/pet/${pet.type}/sad.png`;
+                document.getElementById("pet-display").src = `../assets/pet/${pet.type}/angry.png`;
                 pet.happiness -= 25;
                 pet.love -= 10;
+                penalty += 1;
                 if (pet.happiness < 0) {
                     pet.happiness = 0;
                 }
@@ -283,12 +290,22 @@ function updateInfo() {
         } else if (pet.happiness >(pet.maxHappiness * (1/3))) {
             document.getElementById("pet-display").src = `../assets/pet/${pet.type}/neutral.png`;
         } else {
-            document.getElementById("pet-display").src = `../assets/pet/${pet.type}/sad.png`;
+            document.getElementById("pet-display").src = `../assets/pet/${pet.type}/cry.png`;
         }
     }
 
     if (pet.love === pet.maxLove) {
         levelUp();
+    }
+    if (penalty >= 10) {
+        document.getElementById("pet-display").src = `../assets/pet/${pet.type}/angry.png`;
+        penalty = 0; // reset penalty counter
+        pet.happiness = 0;
+        pet.love = 0;
+        pet.level -= 1; // lose a level
+        if (pet.level < 1) {
+            pet.level = 1; // prevent going below level 1
+        }
     }
 }
 

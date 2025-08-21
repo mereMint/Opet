@@ -38,8 +38,8 @@ if (petNumber === 1) {
     }else if (petNumber === 2) {
         document.getElementById("pet1").src = "../assets/pet/bear/neutral.png";
         document.getElementById("pet2").src = "../assets/pet/bunny/happy.png";
-        document.getElementById("pet3").src = "../assets/pet/cat/happy.png";
-        document.getElementById("pet4").src = "../assets/pet/fox/happy.png";
+        document.getElementById("pet3").src = "../assets/pet/cat/neutral.png";
+        document.getElementById("pet4").src = "../assets/pet/fox/neutral.png";
         document.getElementById("pet5").src = "../assets/pet/penguin/neutral.png";
         document.getElementById("pet6").src = "../assets/pet/pig/neutral.png";
         document.getElementById("pet7").src = "../assets/pet/squid/neutral.png";
@@ -185,4 +185,43 @@ function choose(petNumber) {
         localStorage.setItem("pet", JSON.stringify(pet));
         window.location.href = "hub.html";
     }
+}
+
+function cry(petNumber) {
+    if (petNumber === 1) {
+        document.getElementById("pet1").src = "../assets/pet/bear/cry.png";
+    } else if (petNumber === 2) {
+        document.getElementById("pet2").src = "../assets/pet/bunny/cry.png";
+    } else if (petNumber === 3) {
+        document.getElementById("pet3").src = "../assets/pet/cat/cry.png";
+    } else if (petNumber === 4) {
+        document.getElementById("pet4").src = "../assets/pet/fox/cry.png";
+    } else if (petNumber === 5) {
+        document.getElementById("pet5").src = "../assets/pet/penguin/cry.png";
+    } else if (petNumber === 6) {
+        document.getElementById("pet6").src = "../assets/pet/pig/cry.png";
+    } else if (petNumber === 7) {
+        document.getElementById("pet7").src = "../assets/pet/squid/cry.png";
+    } else if (petNumber === 8) {
+        document.getElementById("pet8").src = "../assets/pet/wolf/cry.png";
+    }
+    setTimeout(() => {
+            if (petNumber === 1) {
+                document.getElementById("pet1").src = "../assets/pet/bear/neutral.png";
+            } else if (petNumber === 2) {
+                document.getElementById("pet2").src = "../assets/pet/bunny/neutral.png";
+            } else if (petNumber === 3) {
+                document.getElementById("pet3").src = "../assets/pet/cat/neutral.png";
+            } else if (petNumber === 4) {
+                document.getElementById("pet4").src = "../assets/pet/fox/neutral.png";
+            } else if (petNumber === 5) {
+                document.getElementById("pet5").src = "../assets/pet/penguin/neutral.png";
+            } else if (petNumber === 6) {
+                document.getElementById("pet6").src = "../assets/pet/pig/neutral.png";
+            } else if (petNumber === 7) {
+                document.getElementById("pet7").src = "../assets/pet/squid/neutral.png";
+            } else if (petNumber === 8) {
+                document.getElementById("pet8").src = "../assets/pet/wolf/neutral.png";
+            }
+        }, 1500); // Reset to neutral after 2 seconds
 }
