@@ -43,35 +43,32 @@ function cuddle() {
 function action1() {
     // food
     if (faceblock === false) {
-        faceblock = true;
-        if (pet.happiness > 70){
-            document.getElementById("pet-display").src = `../assets/pet/${pet.type}/love.png`;
-        }else{
-            document.getElementById("pet-display").src = `../assets/pet/${pet.type}/happy.png`;
-        }
-        
+        faceblock = true; 
         pet.hunger += 10;
-        // too much food penalty
+        pet.energy -= 2;
         if (pet.hunger > pet.maxHunger) {
+            pet.hunger = pet.maxHunger;
+        }
+
+        if (state === 1){
             pet.happiness -= 25;
             pet.love -= 5;
+            penalty += 1;
+            document.getElementById("pet-display").src = `../assets/pet/${pet.type}/angry.png`;
             if (pet.happiness < 0) {
                 pet.happiness = 0;
             }
             if (pet.love < 0) {
                 pet.love = 0;
             }
-            pet.hunger = pet.maxHunger;
-            document.getElementById("pet-display").src = `../assets/pet/${pet.type}/dislike.png`;
-        }
-        // eating takes energy
-        energy = pet.energy - 5;
-        if (energy < 0) {
-            energy = 0;
-        }
-        // if sleeping penatly
-        if (state === 1){
-                pet.happiness -= 25;
+            if (pet.energy < 0) {
+                pet.energy = 0;
+            }
+        }else{
+            if (pet.hunger > pet.maxHunger || pet.energy < 0){
+                document.getElementById("pet-display").src = `../assets/pet/${pet.type}/dislike.png`;
+                pet.hunger = pet.maxHunger;
+                pet.happiness -= 10;
                 pet.love -= 5;
                 if (pet.happiness < 0) {
                     pet.happiness = 0;
@@ -79,7 +76,22 @@ function action1() {
                 if (pet.love < 0) {
                     pet.love = 0;
                 }
+                if (pet.energy < 0) {
+                    pet.energy = 0;
+                }
+            }else{
+                if (pet.happiness > (pet.maxHappiness * (2/3))){
+                    document.getElementById("pet-display").src = `../assets/pet/${pet.type}/love.png`;
+                }else{
+                    document.getElementById("pet-display").src = `../assets/pet/${pet.type}/happy.png`;
+                }
+
             }
+        }
+        
+
+
+        
         // for animation
         setTimeout(() => {
             faceblock = false;
@@ -176,6 +188,32 @@ function action3() {
     }
 }
 
+function action4() {
+    // sleep
+    if (faceblock === false || state === 0) {
+        console.log("sleeping");
+        faceblock = true;
+        state = 1;
+        document.getElementById("pet-display").classList.add("Slept");
+        if (pet.happiness > (pet.maxHappiness/2)){
+            document.getElementById("pet-display").src = `../assets/pet/${pet.type}/happy.png`;
+        }else{
+            document.getElementById("pet-display").src = `../assets/pet/${pet.type}/neutral.png`;
+        }
+        setTimeout(() => {
+            document.getElementById("pet-display").classList.remove("Slept");
+            document.getElementById("pet-display").classList.add("endgame");
+            console.log("wave 2"); 
+            setTimeout(() => {
+                faceblock = false;
+                state = 0;
+                document.getElementById("pet-display").classList.remove("endgame");
+                console.log("finished sleeping")
+            }, 1000); // animation 2
+        }, 1000*60); // animation 1
+    }
+}
+
 function loadPetData() {
     pet = JSON.parse(localStorage.getItem("pet"));
 }
@@ -187,22 +225,29 @@ function savePetData() {
 setInterval(() => savePetData(), 1000);
 setInterval(() => updatePet(), 5000);
 setInterval(() => updateInfo(), 100);
+setInterval(() => sleepBenefits(), 1000 * 30);
+
 
 
 function updatePet() {
 
+    /*
     // time wise sleep
     time = new Date().getHours();
-    if(time < 8 && time > 22){
+    console.log(time);
+    if(time < 8 || time > 22){
         state = 1;
         document.getElementById("box").classList.add("sleepy");
         document.getElementById("box").classList.remove("wakey");
+        document.getElementById("pet-display").classList.add("backgroundSleepPet");
 
     }else{
         state = 0;
         document.getElementById("box").classList.add("wakey");
         document.getElementById("box").classList.remove("sleepy");
+        document.getElementById("pet-display").classList.remove("backgroundSleepPet");
     }
+    */
     if (state === 0) { // when awake
         // pet gets hungrier and add energy
         if (pet.hunger > 0) {
@@ -269,9 +314,6 @@ function updatePet() {
 function updateInfo() {
     let ageInDays = (new Date() - new Date(pet.creationdate)) / (1000 * 60 * 60 * 24);
     pet.age = ageInDays
-    console.clear();
-    console.log(pet);
-    console.log(ageInDays);
     document.getElementById("pet-name").innerHTML = pet.name;
     document.getElementById("pet-hunger").innerHTML = `Hunger: ${pet.hunger}/${pet.maxHunger}`;
     document.getElementById("pet-thirst").innerHTML = `Thirst: ${pet.thirst}/${pet.maxThirst}`;
@@ -316,4 +358,11 @@ function levelUp() {
     pet.maxEnergy += 10;
     pet.maxLove = pet.maxLove * 2;
     love = 0; // reset love after leveling up
+}
+
+function sleepBenefits() {
+    if (state === 1) {
+        pet.happiness += 1;
+        pet.energy += 10;
+    }
 }
