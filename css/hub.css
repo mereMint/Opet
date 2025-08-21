@@ -44,6 +44,11 @@
         background-color: #0e0430e3;
         backdrop-filter: blur(5px);
         animation: flyIn 1s ease-in-out;
+        height: 90vh;
+        justify-items: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     .pet{
         margin-left: 5vw;
@@ -92,6 +97,8 @@
     }
     .actions {
         display: flex;
+        position: fixed;
+        bottom: 0;
         flex-direction: row;
         justify-content: center;
         margin: auto;
@@ -143,7 +150,6 @@
     }
 
     h1 {
-        margin-top: 1vh;
         font-family: "Press Start 2P", system-ui;
         font-weight: bold;
         text-align: center;
@@ -160,33 +166,34 @@
         text-shadow: 2px 2px 0 #000000, 4px 4px 0 #000000, 6px 6px 0 #000000, 8px 8px 0 #000000;
     }
     .box{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 5vh;
-        margin-left: 5vw;
-        margin-right: 5vw;
+        margin-top: 1vh;
+        margin-left: 1vw;
+        margin-right: 1vw;
         /* From https://css.glass */
         padding: 0.1vw;
         border-radius: 10px;
         background-color: #0e0430e3;
         backdrop-filter: blur(5px);
         animation: flyIn 1s ease-in-out;
-        height: 90vh;
+        height: 85vh;
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
     }
     .pet{
-        margin-left: 5vw;
-        margin-right: 5vw;
+        margin-left: 1vw;
+        margin-right: 1vw;
         border-radius: 10px;
         display: flex;
-        flex-direction:column;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         padding: 10px;
     }
     .game-display {
         justify-content: center;
-        height: 256px;
+        height: 220px;
         width: 256px;
         border-radius: 10px;
     }
@@ -195,7 +202,7 @@
         height: 128px;
         object-fit: cover;
         border-radius: 10px;
-        margin: 6vh auto;
+        margin: 0 auto;
         display: block;
         border-width: 10px;
         background-color: #522F81;
@@ -203,31 +210,33 @@
     }
 
     .info{
+        margin-bottom: 15vh;
         height: 256px;
         width: 256px;
         border-radius: 10px;
+        justify-items: center;
     }
     .info-display{
         justify-content: center;
-        height:256px;
+        height: 192px;
         width: 256px;
         border-radius: 10px;
         border: 10px solid #30255F;
         background-color: #0E0430;
         text-align: center;
         display: block;
+        margin: 0 auto;
         overflow-y: scroll;
     }
     .actions {
+        margin-top: 10vh;
         display: flex;
         position: fixed;
-        top: 0;
-        z-index: 1000;
+        bottom: 0;
         flex-direction: row;
         justify-content: center;
-        margin-bottom: 10vh;
-        margin: 2vh auto;
-        width: auto;
+        margin: auto;
+        width:auto;
         gap: 5vw;
         border: 10px solid #30255F;
         background-color: #0E0430;
@@ -276,5 +285,23 @@
     to {
         transform: translateY(0);
         opacity: 1;
+    }
+}
+
+.sleepy{
+    animation: gotosleep 5s ease-in-out forwards;
+}
+
+.wakey{
+    animation: wakeup 5s ease-in-out backwards;
+}
+
+
+@keyframes gotosleep {
+    from {
+        background-color: #0e0430e3;
+    }
+    to {
+        background-color: #050110ec;
     }
 }
