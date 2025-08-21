@@ -19,7 +19,7 @@ function cuddle() {
             }
         }else if (state === 0){ // awake
             // penatly if no energy and animal is not happy
-            if (pet.energy < 0 && pet.happiness < 26) {
+            if (pet.energy < 0 || pet.happiness < 26) {
                 pet.energy = 0;
                 pet.love -= 5;
                 if (pet.love < 0) {
@@ -41,7 +41,12 @@ function action1() {
     // food
     if (faceblock === false) {
         faceblock = true;
-        document.getElementById("pet-display").src = `../assets/pet/${pet.type}/love.png`;
+        if (pet.happiness > 70){
+            document.getElementById("pet-display").src = `../assets/pet/${pet.type}/love.png`;
+        }else{
+            document.getElementById("pet-display").src = `../assets/pet/${pet.type}/happy.png`;
+        }
+        
         pet.hunger += 10;
         // too much food penalty
         if (pet.hunger > pet.maxHunger) {
@@ -83,7 +88,11 @@ function action2() {
     // give water
     if (faceblock === false) {
         faceblock = true;
-        document.getElementById("pet-display").src = `../assets/pet/${pet.type}/love.png`;
+        if (pet.happiness > 70){
+            document.getElementById("pet-display").src = `../assets/pet/${pet.type}/love.png`;
+        }else{
+            document.getElementById("pet-display").src = `../assets/pet/${pet.type}/happy.png`;
+        }
         pet.thirst += 20;
         // too much water penalty
         if (pet.thirst > pet.maxThirst) {
@@ -118,28 +127,45 @@ function action3() {
     if (faceblock === false) {
         faceblock = true;
         pet.energy -=40;
-        if (pet.energy < 0) {
+        if (pet.energy < 0) { // no energy doens't succed
             pet.energy = 0;
-        }
-
-        if (state === 1){ // sleep penatly
-            pet.happiness -= 25;
+            pet.happiness -= 20;
             pet.love -= 5;
             if (pet.happiness < 0) {
                 pet.happiness = 0;
             }
             if (pet.love < 0) {
                 pet.love = 0;
-            }
-        }else if (state === 0){
-            pet.happiness += 15;
-            pet.love += 20;
+            } // gets annoyed
+            document.getElementById("pet-display").src = `../assets/pet/${pet.type}/neutral.png`;
+        }else{
+            if (state === 1){ // sleep penatly
+                document.getElementById("pet-display").src = `../assets/pet/${pet.type}/sad.png`;
+                pet.happiness -= 25;
+                pet.love -= 10;
+                if (pet.happiness < 0) {
+                    pet.happiness = 0;
+                }
+                if (pet.love < 0) {
+                    pet.love = 0;
+                }
+            }else if (state === 0){ // if awake and enough energy then success
+                document.getElementById("pet-display").src = `../assets/pet/${pet.type}/love.png`;
+                pet.happiness += 15;
+                pet.love += 20;
 
-            if (pet.happiness > pet.maxHappiness) {
-                pet.happiness = pet.maxHappiness;
+                if (pet.happiness > pet.maxHappiness) {
+                    pet.happiness = pet.maxHappiness;
+                }
+                if (pet.love > pet.maxLove) {
+                    pet.love = pet.maxLove;
+                }
+            
             }
-        }
-
+        }        
+        setTimeout(() => {
+            faceblock = false;
+        }, 1000);
     }
 }
 
@@ -252,9 +278,9 @@ function updateInfo() {
     //have to add a check for if any other face has to be displayed
     // update pet image based on various states
     if (faceblock=== false) {
-        if (pet.happiness > 70) {
+        if (pet.happiness > (pet.maxHappiness * (2/3))) {
             document.getElementById("pet-display").src = `../assets/pet/${pet.type}/happy.png`;
-        } else if (pet.happiness > 30) {
+        } else if (pet.happiness >(pet.maxHappiness * (1/3))) {
             document.getElementById("pet-display").src = `../assets/pet/${pet.type}/neutral.png`;
         } else {
             document.getElementById("pet-display").src = `../assets/pet/${pet.type}/sad.png`;
