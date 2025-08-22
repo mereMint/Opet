@@ -231,7 +231,6 @@ setInterval(() => sleepBenefits(), 1000 * 30);
 
 function updatePet() {
 
-    /*
     // time wise sleep
     time = new Date().getHours();
     console.log(time);
@@ -243,11 +242,10 @@ function updatePet() {
 
     }else{
         state = 0;
-        document.getElementById("box").classList.add("wakey");
         document.getElementById("box").classList.remove("sleepy");
         document.getElementById("pet-display").classList.remove("backgroundSleepPet");
+        document.getElementById("box").classList.add("wakey");
     }
-    */
     if (state === 0) { // when awake
         // pet gets hungrier and add energy
         if (pet.hunger > 0) {
