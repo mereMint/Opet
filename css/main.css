@@ -17,12 +17,12 @@
         width: 32px;
         position: sticky;
         background: #522F81;
-        padding-top: 0.5vh;
-        padding-bottom: 0.5vh;
+        padding-top: 0.75vh;
+        padding-bottom: 0.75vh;
         padding-left: 0.5vw;
         padding-right: 0.5vw;
         border-radius: 10px;
-        opacity: 0.1;
+        opacity: 0.25;
         box-shadow: #000000 0px 0px 10px, #000000 0px 0px 20px, #000000 0px 0px 30px;
     }
 
