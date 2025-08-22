@@ -1,6 +1,18 @@
 function backgroundScroll() {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
   document.body.style.backgroundPosition = `center ${-scrollTop * 0.5}px`;
+  document.getElementById("a1").style.rotate = `${-scrollTop * 0.1}deg`;
+  document.getElementById("a2").style.rotate = `${-scrollTop * 0.1}deg`;
+  document.getElementById("a3").style.rotate = `${scrollTop * 0.1}deg`;
+  document.getElementById("a4").style.rotate = `${scrollTop * 0.1}deg`;
+  document.getElementById("a5").style.rotate = `${-scrollTop * 0.2}deg`;
+  document.getElementById("a6").style.rotate = `${-scrollTop * 0.2}deg`;
+  document.getElementById("a7").style.rotate = `${scrollTop * 0.2}deg`;
+  document.getElementById("a8").style.rotate = `${scrollTop * 0.2}deg`;
+  document.getElementById("a9").style.rotate = `${-scrollTop * 0.3}deg`;
+  document.getElementById("a10").style.rotate = `${scrollTop * 0.3}deg`;
+
+
 }
 
 window.addEventListener('scroll', backgroundScroll);

@@ -65,7 +65,64 @@
         color:#BBD6FD ;
         font-size: 1.2em;
         text-align: center;
-        margin-top: 60vh;
+        margin-top: 70vh;
+    }
+
+    .animal{
+        height: 128px;
+        position: relative;
+        z-index: -1;
+    }
+    #a1{
+        right: 20vw;
+        bottom: 5vh;
+        rotate: 320deg;
+    }
+    #a2{
+        right: 25vw;
+        top: 50vh;
+    }
+    #a3{
+        left: 15vw;
+        bottom: 18vh;
+    }
+    #a4{
+        left: 15vw;
+        top:40vh;
+    }
+    #a5{
+        right: 20vw;
+        top: 35vh;
+    }
+    #a6{
+        right: 10vw;
+        top: 80vh;
+    }
+    #a7{
+        left: 20vw;
+        top: 90vh;
+    }
+    #a8{
+        left: 5vw;
+        top: 35vh;
+    }
+    #a9{
+        height: 64px;
+        left: 20vw;
+        top: 75vh;
+    }
+    #a10{
+        height: 64px;
+        right: 30vw;
+        top:60vh;
+    }
+
+
+    .tips {
+        color:#BBD6FD ;
+        font-size: 1.2em;
+        text-align: center;
+        margin-top: 20vh;
     }
 
     .credentials {
@@ -148,6 +205,63 @@
         font-size: 1.2em;
         text-align: center;
         margin-top: 70vh;
+    }
+
+    .animal{
+        height: 64px;
+        position: relative;
+        z-index: -1;
+    }
+    #a1{
+        right: 2vw;
+        bottom: 5vh;
+        rotate: 320deg;
+    }
+    #a2{
+        right: 25vw;
+        top: 50vh;
+    }
+    #a3{
+        left: 15vw;
+        bottom: 18vh;
+    }
+    #a4{
+        left: 5vw;
+        top:60vh;
+    }
+    #a5{
+        right: 2vw;
+        top: 55vh;
+    }
+    #a6{
+        right: 15vw;
+        top: 180vh;
+    }
+    #a7{
+        left: -25vw;
+        top: 140vh;
+    }
+    #a8{
+        left: 5vw;
+        top: 60vh;
+    }
+    #a9{
+        height: 64px;
+        left: 35vw;
+        top: 80vh;
+    }
+    #a10{
+        height: 64px;
+        right: 3vw;
+        bottom: 8vh;
+    }
+
+
+    .tips {
+        color:#BBD6FD ;
+        font-size: 1.2em;
+        text-align: center;
+        margin-top: 20vh;
     }
 
     .credentials {
