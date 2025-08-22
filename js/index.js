@@ -1,3 +1,21 @@
+let muisc = new Audio('assets/sounds/main.ogg')
+muisc.loop = true;
+let muted = true;
+
+function audio() {
+  if (muted) {
+    muisc.play();
+    muted = false;
+    document.getElementById("audio").src = `assets/actions/play.png`;
+  } else {
+    muisc.pause();
+    muted = true;
+    document.getElementById("audio").src = `assets/actions/mute.png`;
+  }
+}
+
+
+
 function backgroundScroll() {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
   document.body.style.backgroundPosition = `center ${-scrollTop * 0.5}px`;
