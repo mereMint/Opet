@@ -325,7 +325,7 @@
 }
 
 .wakey{
-    animation: gotosleep 4s ease-in-out backwards;
+    animation: gowakeup 4s ease-in-out forwards;
 }
 
 
@@ -366,6 +366,14 @@
     }
     to {
         background-color: #050110ec;
+    }
+}
+
+@keyframes gowakeup {
+    from {
+    }
+    to {
+        background-color: #0e0430e3;
     }
 }
 
