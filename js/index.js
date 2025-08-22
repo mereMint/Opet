@@ -1,8 +1,10 @@
 let muisc = new Audio('assets/sounds/main.ogg')
+let click = new Audio('assets/sounds/click.ogg')
 muisc.loop = true;
 let muted = true;
+muisc.volume = 0.5;
 
-function audio() {
+function noise() {
   if (muted) {
     muisc.play();
     muted = false;
@@ -11,6 +13,12 @@ function audio() {
     muisc.pause();
     muted = true;
     document.getElementById("audio").src = `assets/actions/mute.png`;
+  }
+}
+
+function clickSound() {
+  if(!muted){
+    click.play();
   }
 }
 
@@ -37,6 +45,7 @@ window.addEventListener('scroll', backgroundScroll);
 
 
 function newGame() {
+  clickSound();
   console.log("New game started");
   // Add logic to initialize a new game here
    localStorage.removeItem('pet');
@@ -49,6 +58,7 @@ function newGame() {
 }
 
 function loadGame() {
+  clickSound();
   document.getElementById("box").classList.add("flyout");
   document.getElementById("body").classList.add("scrolly");
   

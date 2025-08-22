@@ -4,8 +4,36 @@ let state = 0;
 penalty = 0; // fuck ups counter
 window.onload = loadPetData();
 
+
+let muisc = new Audio('../assets/sounds/main.ogg')
+let click = new Audio('../assets/sounds/click.ogg')
+muisc.volume = 0.5;
+muisc.loop = true;
+let muted = true;
+
+function noise() {
+  if (muted) {
+    muisc.play();
+    muted = false;
+    document.getElementById("audio").src = `../assets/actions/play.png`;
+  } else {
+    muisc.pause();
+    muted = true;
+    document.getElementById("audio").src = `../assets/actions/mute.png`;
+  }
+}
+
+function clickSound() {
+  if(!muted){
+    click.play();
+  }
+}
+
+
+
 function cuddle() {
     if (faceblock === false) {
+        clickSound();
         faceblock = true;
         pet.energy -= 25;
         if (state === 1){ // if sleeping penatly
@@ -43,6 +71,7 @@ function cuddle() {
 function action1() {
     // food
     if (faceblock === false) {
+        clickSound();
         faceblock = true; 
         pet.hunger += 10;
         pet.energy -= 2;
@@ -102,6 +131,7 @@ function action1() {
 function action2() {
     // give water
     if (faceblock === false) {
+        clickSound();
         faceblock = true;
         if (pet.happiness > 70){
             document.getElementById("pet-display").src = `../assets/pet/${pet.type}/love.png`;
@@ -142,6 +172,7 @@ function action2() {
 function action3() {
     // train
     if (faceblock === false) {
+        clickSound();
         faceblock = true;
         pet.energy -=40;
         if (pet.energy < 0) { // no energy doens't succed
@@ -191,6 +222,7 @@ function action3() {
 function action4() {
     // sleep
     if (faceblock === false || state === 0) {
+        clickSound();
         console.log("sleeping");
         faceblock = true;
         state = 1;

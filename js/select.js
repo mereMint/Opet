@@ -1,3 +1,4 @@
+
 let pet = {
     name: "Dave",
     type: "cat",
@@ -24,8 +25,33 @@ function backgroundScroll() {
 
 window.addEventListener('scroll', backgroundScroll);
 
+let muisc = new Audio('../assets/sounds/main.ogg')
+let click = new Audio('../assets/sounds/click.ogg')
+muisc.loop = true;
+muisc.volume = 0.5;
+let muted = true;
+
+function noise() {
+  if (muted) {
+    muisc.play();
+    muted = false;
+    document.getElementById("audio").src = `../assets/actions/play.png`;
+  } else {
+    muisc.pause();
+    muted = true;
+    document.getElementById("audio").src = `../assets/actions/mute.png`;
+  }
+}
+
+function clickSound() {
+  if(!muted){
+    console.log("click");
+    click.play();
+  }
+}
 
 function preview(petNumber) {
+    clickSound();
 if (petNumber === 1) {
     document.getElementById("pet1").src = "../assets/pet/bear/happy.png";
     document.getElementById("pet2").src = "../assets/pet/bunny/neutral.png";
@@ -101,6 +127,7 @@ if (petNumber === 1) {
     }
 }
 function choose(petNumber) {
+    
     if (petNumber === 1) {
         if (document.getElementById("pet-name").value === "") {
             pet.name = "Johnny";
