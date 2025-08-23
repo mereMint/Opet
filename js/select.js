@@ -25,27 +25,49 @@ function backgroundScroll() {
 
 window.addEventListener('scroll', backgroundScroll);
 
-let muisc = new Audio('../assets/sounds/main.ogg')
-let click = new Audio('../assets/sounds/click.ogg')
-muisc.loop = true;
-muisc.volume = 0.5;
-let muted = true;
+let settings = {
+}
 
-function noise() {
-  if (muted) {
-    muisc.play();
-    muted = false;
-    document.getElementById("audio").src = `../assets/actions/play.png`;
-  } else {
-    muisc.pause();
-    muted = true;
-    document.getElementById("audio").src = `../assets/actions/mute.png`;
+window.onload = function () {
+  if (!localStorage.getItem("settings")) {
+    localStorage.setItem("settings", JSON.stringify(settings));
+  }else {
+    settings = JSON.parse(localStorage.getItem("settings"));
   }
 }
 
+
+let muisc = new Audio('../assets/sounds/main.ogg')
+let click = new Audio('../assets/sounds/click.ogg')
+muisc.loop = true;
+muisc.volume = 0.25;
+
+
+
+function noise() {
+  if (settings.Select) {
+    settings.Select = false;
+    console.log("Settings saved")
+    localStorage.setItem("settings", JSON.stringify(settings));
+  } else {
+    settings.Select = true;
+    console.log("Settings saved")
+    localStorage.setItem("settings", JSON.stringify(settings));
+  }
+}
+
+setInterval(function () {
+  if (settings.Select) {
+    muisc.play();
+    document.getElementById("audio").src = `../assets/actions/play.png`;
+  } else {
+    muisc.pause();
+    document.getElementById("audio").src = `../assets/actions/mute.png`;
+  }
+},100)
+
 function clickSound() {
-  if(!muted){
-    console.log("click");
+  if(!settings.Main){
     click.play();
   }
 }

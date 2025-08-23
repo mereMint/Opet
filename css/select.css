@@ -5,7 +5,9 @@
     #audio {
         height: 32px;
         width: 32px;
-        position: sticky;
+        position: absolute;
+        top: 2vh;
+        right: 2vw;
         background: #522F81;
         padding-top: 0.75vh;
         padding-bottom: 0.75vh;
@@ -14,6 +16,7 @@
         border-radius: 10px;
         opacity: 0.25;
         box-shadow: #000000 0px 0px 10px, #000000 0px 0px 20px, #000000 0px 0px 30px;
+        animation: audiofly 1s ease-in-out forwards;
     }
 
     #audio:hover {
@@ -116,7 +119,7 @@
         padding-left: 1vw;
         padding-right: 1vw;
         border-radius: 10px;
-        opacity: 0.6;
+        opacity: 0.2;
         box-shadow: #000000 0px 0px 10px, #000000 0px 0px 20px, #000000 0px 0px 30px;
     }
 
@@ -137,7 +140,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        margin-top: 5vh;
+        margin-top: 2vh;
         margin-left: 1vw;
         margin-right: 1vw;
         /* From https://css.glass */
@@ -222,4 +225,13 @@
 
 ::-webkit-scrollbar {
     width: 0px;
+}
+
+@keyframes audiofly {
+    from{
+        transform: translateY(-100%);
+    }
+    to{
+        transform: translateY(0%);
+    }
 }

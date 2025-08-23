@@ -1,26 +1,54 @@
+let settings = {
+  Main : false,
+  Select : false,
+  Hub : false,
+}
+
+window.onload = function () {
+  if (!localStorage.getItem("settings")) {
+    localStorage.setItem("settings", JSON.stringify(settings));
+  }else {
+    settings = JSON.parse(localStorage.getItem("settings"));
+  }
+}
+
+
 let muisc = new Audio('assets/sounds/main.ogg')
 let click = new Audio('assets/sounds/click.ogg')
 muisc.loop = true;
-let muted = true;
-muisc.volume = 0.5;
+muisc.volume = 0.25;
+
+
 
 function noise() {
-  if (muted) {
+  if (settings.Main) {
+    settings.Main = false;
+    console.log("Settings saved")
+    localStorage.setItem("settings", JSON.stringify(settings));
+  } else {
+    settings.Main = true;
+    console.log("Settings saved")
+    localStorage.setItem("settings", JSON.stringify(settings));
+  }
+}
+
+setInterval(function () {
+  if (settings.Main) {
     muisc.play();
-    muted = false;
     document.getElementById("audio").src = `assets/actions/play.png`;
   } else {
     muisc.pause();
-    muted = true;
     document.getElementById("audio").src = `assets/actions/mute.png`;
   }
-}
+},100)
 
 function clickSound() {
-  if(!muted){
+  if(!settings.Main){
     click.play();
   }
 }
+
+
 
 
 
@@ -46,11 +74,14 @@ window.addEventListener('scroll', backgroundScroll);
 
 function newGame() {
   clickSound();
-  console.log("New game started");
   // Add logic to initialize a new game here
-   localStorage.removeItem('pet');
-   document.getElementById("box").classList.add("flyout");
+  localStorage.removeItem('pet');
+  document.getElementById("box").classList.add("flyout");
   document.getElementById("body").classList.add("scrolly");
+
+  // audio save
+    console.log("Settings saved")
+    localStorage.setItem("settings", JSON.stringify(settings));
   
   setTimeout(() => {
     window.location.href = "html/select.html";
@@ -61,6 +92,9 @@ function loadGame() {
   clickSound();
   document.getElementById("box").classList.add("flyout");
   document.getElementById("body").classList.add("scrolly");
+
+  // audio save
+    
   
   setTimeout(() => {
     if (!localStorage.getItem("pet")) {
@@ -70,6 +104,5 @@ function loadGame() {
     }
    
   }, 1500);
-  console.log("Game loaded");
   // Add logic to load a saved game here
 }

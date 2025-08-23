@@ -3,7 +3,9 @@
     #audio {
         height: 32px;
         width: 32px;
-        position: sticky;
+        position: absolute;
+        top: 2vh;
+        right: 2vw;
         background: #522F81;
         padding-top: 0.75vh;
         padding-bottom: 0.75vh;
@@ -12,6 +14,7 @@
         border-radius: 10px;
         opacity: 0.25;
         box-shadow: #000000 0px 0px 10px, #000000 0px 0px 20px, #000000 0px 0px 30px;
+        animation: audiofly 1s ease-in-out forwards;
     }
 
     #audio:hover {
@@ -159,8 +162,10 @@
         padding-left: 1vw;
         padding-right: 1vw;
         border-radius: 10px;
-        opacity: 0.6;
+        opacity: 0.2;
         box-shadow: #000000 0px 0px 10px, #000000 0px 0px 20px, #000000 0px 0px 30px;
+        animation: audiofly 1s ease-in-out forwards;
+
     }
 
 
@@ -347,7 +352,7 @@
 }
 
 .Slept{
-    animation: SleptPet 60s  ease-in-out forwards;
+    animation: SleptPet 30s  ease-in-out forwards;
     background-size: stretch;
     background-repeat: no-repeat;
     image-rendering: pixelated;
@@ -423,5 +428,15 @@
     100% {
         background-color: #522F81;
         background-image: none;
+    }
+}
+
+@keyframes audiofly {
+    from{
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    to{
+        transform: translateY(0%);
     }
 }

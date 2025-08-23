@@ -15,7 +15,9 @@
     #audio {
         height: 32px;
         width: 32px;
-        position: sticky;
+        position: absolute;
+        top: 2vh;
+        right: 2vw;
         background: #522F81;
         padding-top: 0.75vh;
         padding-bottom: 0.75vh;
@@ -24,6 +26,7 @@
         border-radius: 10px;
         opacity: 0.25;
         box-shadow: #000000 0px 0px 10px, #000000 0px 0px 20px, #000000 0px 0px 30px;
+        animation: audiofly 1s ease-in-out forwards;
     }
 
     #audio:hover {
@@ -180,8 +183,9 @@
         padding-left: 1vw;
         padding-right: 1vw;
         border-radius: 10px;
-        opacity: 0.6;
+        opacity: 0.2;
         box-shadow: #000000 0px 0px 10px, #000000 0px 0px 20px, #000000 0px 0px 30px;
+        animation: audiofly 1s ease-in-out forwards;
     }
 
 
@@ -335,5 +339,15 @@
     100% {
         transform: translateY(25%);
         opacity: 0;
+    }
+}
+
+@keyframes audiofly {
+    from{
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0%);
     }
 }

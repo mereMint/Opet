@@ -2,29 +2,49 @@ let pet = {};
 let faceblock = false; // to block face updates when pet is being fed or played with
 let state = 0;
 penalty = 0; // fuck ups counter
+actionsleep = false;
 window.onload = loadPetData();
+
+
+let settings = {
+}
+
+window.onload = function () {
+    settings = JSON.parse(localStorage.getItem("settings"));
+}
 
 
 let muisc = new Audio('../assets/sounds/main.ogg')
 let click = new Audio('../assets/sounds/click.ogg')
-muisc.volume = 0.5;
 muisc.loop = true;
-let muted = true;
+muisc.volume = 0.25;
+
+
 
 function noise() {
-  if (muted) {
-    muisc.play();
-    muted = false;
-    document.getElementById("audio").src = `../assets/actions/play.png`;
+  if (settings.Hub) {
+    settings.Hub = false;
+    console.log("Settings saved")
+    localStorage.setItem("settings", JSON.stringify(settings));
   } else {
-    muisc.pause();
-    muted = true;
-    document.getElementById("audio").src = `../assets/actions/mute.png`;
+    settings.Hub = true;
+    console.log("Settings saved")
+    localStorage.setItem("settings", JSON.stringify(settings));
   }
 }
 
+setInterval(function () {
+  if (settings.Hub) {
+    muisc.play();
+    document.getElementById("audio").src = `../assets/actions/play.png`;
+  } else {
+    muisc.pause();
+    document.getElementById("audio").src = `../assets/actions/mute.png`;
+  }
+},100)
+
 function clickSound() {
-  if(!muted){
+  if(!settings.Hub){
     click.play();
   }
 }
@@ -221,17 +241,14 @@ function action3() {
 
 function action4() {
     // sleep
-    if (faceblock === false || state === 0) {
+    if (faceblock === false && state === 0) {
         clickSound();
         console.log("sleeping");
         faceblock = true;
         state = 1;
+        actionsleep = true;
         document.getElementById("pet-display").classList.add("Slept");
-        if (pet.happiness > (pet.maxHappiness/2)){
-            document.getElementById("pet-display").src = `../assets/pet/${pet.type}/happy.png`;
-        }else{
-            document.getElementById("pet-display").src = `../assets/pet/${pet.type}/neutral.png`;
-        }
+        document.getElementById("pet-display").src = `../assets/pet/${pet.type}/sleep.png`;
         setTimeout(() => {
             document.getElementById("pet-display").classList.remove("Slept");
             document.getElementById("pet-display").classList.add("endgame");
@@ -239,10 +256,11 @@ function action4() {
             setTimeout(() => {
                 faceblock = false;
                 state = 0;
+                actionsleep = false;
                 document.getElementById("pet-display").classList.remove("endgame");
                 console.log("finished sleeping")
             }, 1000); // animation 2
-        }, 1000*60); // animation 1
+        }, 1000*30); // animation 1
     }
 }
 
@@ -262,21 +280,22 @@ setInterval(() => sleepBenefits(), 1000 * 30);
 
 
 function updatePet() {
-
+    console.log(state);
     // time wise sleep
     time = new Date().getHours();
-    console.log(time);
-    if(time < 8 || time > 22){
+    if(!actionsleep && time < 8 || !actionsleep && time > 22){
         state = 1;
         document.getElementById("box").classList.add("sleepy");
         document.getElementById("box").classList.remove("wakey");
         document.getElementById("pet-display").classList.add("backgroundSleepPet");
 
-    }else{
+    }else if(!actionsleep){
         state = 0;
         document.getElementById("box").classList.remove("sleepy");
         document.getElementById("pet-display").classList.remove("backgroundSleepPet");
         document.getElementById("box").classList.add("wakey");
+    }else{
+
     }
     if (state === 0) { // when awake
         // pet gets hungrier and add energy
@@ -394,5 +413,15 @@ function sleepBenefits() {
     if (state === 1) {
         pet.happiness += 1;
         pet.energy += 10;
+        penalty -= 1;
+    }
+    if (pet.happiness > pet.maxHappiness){
+        pet.happiness = pet.maxHappiness;
+    }
+    if (pet.energy > pet.maxEnergy){
+        pet.energy = pet.maxEnergy;
+    }
+    if (penalty < 0) {
+        penalty = 0;
     }
 }
