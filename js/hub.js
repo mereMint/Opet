@@ -14,6 +14,9 @@ window.onload = function () {
 }
 
 
+//Everything audio related
+
+
 let muisc = new Audio('../assets/sounds/main.ogg')
 let click = new Audio('../assets/sounds/click.ogg')
 muisc.loop = true;
@@ -44,7 +47,7 @@ setInterval(function () {
 },100)
 
 function clickSound() {
-  if(!settings.Hub){
+  if(settings.Hub){
     click.play();
   }
 }
@@ -376,12 +379,14 @@ function updateInfo() {
     //have to add a check for if any other face has to be displayed
     // update pet image based on various states
     if (faceblock=== false) {
-        if (pet.happiness > (pet.maxHappiness * (2/3))) {
+        if (pet.happiness > (pet.maxHappiness * (2/3)) && state === 0) {
             document.getElementById("pet-display").src = `../assets/pet/${pet.type}/happy.png`;
-        } else if (pet.happiness >(pet.maxHappiness * (1/3))) {
+        } else if (pet.happiness >(pet.maxHappiness * (1/3)) && state === 0) {
             document.getElementById("pet-display").src = `../assets/pet/${pet.type}/neutral.png`;
-        } else {
+        } else if (state === 0) {
             document.getElementById("pet-display").src = `../assets/pet/${pet.type}/cry.png`;
+        }else{
+            document.getElementById("pet-display").src = `../assets/pet/${pet.type}/sleep.png`;
         }
     }
 
@@ -405,6 +410,7 @@ function levelUp() {
     pet.maxHunger += 10;
     pet.maxHappiness += 10;
     pet.maxEnergy += 10;
+    pet.maxThirst += 10;
     pet.maxLove = pet.maxLove * 2;
     love = 0; // reset love after leveling up
 }
@@ -424,4 +430,5 @@ function sleepBenefits() {
     if (penalty < 0) {
         penalty = 0;
     }
+
 }

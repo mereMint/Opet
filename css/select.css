@@ -1,5 +1,5 @@
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 1000px) {
 
 
     #audio {
@@ -107,7 +107,7 @@
 }
 
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1000px) {
 
     #audio {
         height: 32px;

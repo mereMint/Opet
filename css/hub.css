@@ -1,4 +1,4 @@
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 1000px) {
 
     #audio {
         height: 32px;
@@ -150,7 +150,7 @@
 
 
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 1000px) {
 
     #audio {
         height: 32px;

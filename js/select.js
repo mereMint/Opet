@@ -67,7 +67,7 @@ setInterval(function () {
 },100)
 
 function clickSound() {
-  if(!settings.Main){
+  if(settings.Main){
     click.play();
   }
 }
