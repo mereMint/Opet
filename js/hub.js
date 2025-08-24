@@ -6,6 +6,7 @@ actionsleep = false;
 window.onload = loadPetData();
 
 
+
 let settings = {
 }
 
@@ -21,6 +22,7 @@ let muisc = new Audio('../assets/sounds/main.ogg')
 let click = new Audio('../assets/sounds/click.ogg')
 muisc.loop = true;
 muisc.volume = 0.25;
+source = 0;
 
 
 
@@ -44,7 +46,16 @@ setInterval(function () {
     muisc.pause();
     document.getElementById("audio").src = `../assets/actions/mute.png`;
   }
-
+  if (source === 0 && state === 0){
+    muisc.src = '../assets/sounds/main.ogg';
+    muisc.volume = 0.25;
+    source = 1;
+  }
+  if (source === 1 && state === 1){
+    muisc.src = '../assets/sounds/sleep.ogg';
+    muisc.volume = 0.75;
+    source = 0;
+  }
 },100)
 
 function clickSound() {
@@ -288,7 +299,7 @@ function updatePet() {
     console.log(state);
     // time wise sleep
     time = new Date().getHours();
-    if(!actionsleep && time > 8 || !actionsleep && time < 22){
+    if(!actionsleep && time < 8 || !actionsleep && time > 22){
         state = 1;
         document.getElementById("box").classList.add("sleepy");
         document.getElementById("box").classList.remove("wakey");
