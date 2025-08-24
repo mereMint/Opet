@@ -509,7 +509,7 @@ function levelUp() {
 
 function sleepBenefits() {
     if (state === 1) {
-        pet.happiness += 1;
+        pet.happiness += 5;
         pet.energy += 10;
         penalty -= 1;
     }
