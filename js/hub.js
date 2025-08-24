@@ -37,13 +37,14 @@ function noise() {
 }
 
 setInterval(function () {
-  if (settings.Hub) {
+    if (settings.Hub) {
     muisc.play();
     document.getElementById("audio").src = `../assets/actions/play.png`;
   } else {
     muisc.pause();
     document.getElementById("audio").src = `../assets/actions/mute.png`;
   }
+
 },100)
 
 function clickSound() {
@@ -84,10 +85,11 @@ function cuddle() {
                 pet.love += 5;
                 document.getElementById("pet-display").src = `../assets/pet/${pet.type}/love.png`;
             }
-            setTimeout(() => {
+            
+        }
+        setTimeout(() => {
                 faceblock = false;
             }, 1000);
-        }
     }    
 }
 
@@ -286,17 +288,19 @@ function updatePet() {
     console.log(state);
     // time wise sleep
     time = new Date().getHours();
-    if(!actionsleep && time < 8 || !actionsleep && time > 22){
+    if(!actionsleep && time > 8 || !actionsleep && time < 22){
         state = 1;
         document.getElementById("box").classList.add("sleepy");
         document.getElementById("box").classList.remove("wakey");
         document.getElementById("pet-display").classList.add("backgroundSleepPet");
+        console.log("sleeping");
 
     }else if(!actionsleep){
         state = 0;
         document.getElementById("box").classList.remove("sleepy");
         document.getElementById("pet-display").classList.remove("backgroundSleepPet");
         document.getElementById("box").classList.add("wakey");
+        console.log("awake");
     }else{
 
     }
