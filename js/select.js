@@ -15,7 +15,7 @@ let pet = {
     maxEnergy: 100,
     maxLove: 100,
     creationdate: new Date().toISOString(),
-    image: "cat.png"
+    mood: "neutral"
 };
 
 function backgroundScroll() {
