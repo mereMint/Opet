@@ -20,6 +20,8 @@ window.onload = function () {
 
 let muisc = new Audio('../assets/sounds/main.ogg')
 let click = new Audio('../assets/sounds/click.ogg')
+let ack = new Audio('../assets/sounds/ack.ogg')
+
 muisc.loop = true;
 muisc.volume = 0.25;
 source = 0;
@@ -64,6 +66,11 @@ function clickSound() {
   }
 }
 
+function AckSound() {
+  if(settings.Hub){
+    ack.play();
+  }
+}
 
 
 function cuddle() {
@@ -100,6 +107,7 @@ function cuddle() {
         }
         setTimeout(() => {
                 faceblock = false;
+                AckSound();
             }, 1000);
     }    
 }
@@ -160,6 +168,7 @@ function action1() {
         // for animation
         setTimeout(() => {
             faceblock = false;
+            AckSound();
             }, 1000);
     }
 }
@@ -201,6 +210,7 @@ function action2() {
         // for animation
         setTimeout(() => {
             faceblock = false;
+            AckSound();
         }, 1000);
     }
 }
@@ -251,6 +261,7 @@ function action3() {
         }        
         setTimeout(() => {
             faceblock = false;
+            AckSound();
         }, 1000);
     }
 }
@@ -275,6 +286,7 @@ function action4() {
                 actionsleep = false;
                 document.getElementById("pet-display").classList.remove("endgame");
                 console.log("finished sleeping")
+                AckSound();
             }, 1000); // animation 2
         }, 1000*30); // animation 1
     }
