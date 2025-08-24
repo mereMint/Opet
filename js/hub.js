@@ -338,7 +338,7 @@ function updatePet() {
         if (pet.hunger > 0) {
             pet.hunger -= 1;
             if (pet.mood === "Hungry"){
-                pet.hunger -= 5;           
+                pet.hunger -= 9;           
             }
             if (pet.hunger < 0)
             if (pet.hunger < 0) {
@@ -366,7 +366,7 @@ function updatePet() {
         if (pet.thirst > 0) {
             pet.thirst -= 2;
             if (pet.mood === "Thirsty"){
-                pet.thirst -= 5;           
+                pet.thirst -= 13;           
             }
             if (pet.thirst < 0) {
                 pet.thirst = 0;
@@ -386,7 +386,7 @@ function updatePet() {
         }
     }
     // if sad then energy goes down
-    if (pet.happiness < 30) {
+    if (pet.happiness < pet.maxHappiness * (1/3)) {
         pet.energy -= 1;
         if (pet.energy < 0) {
             pet.energy = 0;
@@ -401,7 +401,7 @@ function updatePet() {
         }
     }
     // when a lot of energy and good enough food and thrist then more happy
-    if (pet.energy > 50 && pet.thirst > pet.maxThirst / 2 && pet.hunger > pet.maxHunger / 2) {
+    if (pet.energy > pet.maxEnergy / 2 && pet.thirst > pet.maxThirst / 2 && pet.hunger > pet.maxHunger / 2) {
         pet.happiness += 3;
         if (pet.happiness > pet.maxHappiness){
             pet.happiness = pet.maxHappiness;
@@ -412,7 +412,7 @@ function updatePet() {
     if (pet.happiness === pet.maxHappiness){
         pet.energy += 2;
         if (pet.mood === "Happy"){
-            pet.energy += 1;           
+            pet.energy += 3;           
         }
         if (pet.energy > pet.maxEnergy){
             pet.energy = pet.maxEnergy;
