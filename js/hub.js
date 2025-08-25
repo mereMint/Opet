@@ -5,7 +5,12 @@ penalty = 0; // fuck ups counter
 actionsleep = false;
 window.onload = loadPetData();
 
+let popupshown = false;
 
+
+let startHours;
+let startMinutes;
+let startSeconds;
 
 let settings = {
 }
@@ -76,6 +81,42 @@ function AckSound() {
   }
 }
 
+
+// Game functions
+
+function popup(){
+    if (faceblock === false){
+        faceblock = true;
+        clickSound();
+        if (popupshown === false){
+            popupshown = true;
+            console.log("popup");
+            let popup = document.createElement("div");
+            document.body.appendChild(popup);
+            popup.classList.add("popup");
+            popup.id = "popup";
+            console.log(popup);
+            for (let i = 0; i < 16; i++) {
+                let item = document.createElement("div")
+                document.getElementById("popup").appendChild(item);
+                item.classList.add("popup-item");
+                console.log(item);
+            }
+            setTimeout(()=>{
+                faceblock = false;
+                AckSound();
+            },500)
+        }else{
+            document.getElementById("popup").classList.add("flyoutpop");
+            setTimeout(() => {
+                document.getElementById("popup").remove();
+                faceblock = false;
+                popupshown = false;
+                AckSound();
+            }, 500);
+        }
+    }
+}
 
 function cuddle() {
     if (faceblock === false) {
